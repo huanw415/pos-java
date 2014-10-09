@@ -10,11 +10,11 @@ public class App {
     static ArrayList<String> inputs = new ArrayList<String>();
 
     static void initItems(){
-        Item item1 = new Item("ITEM00001", "橙汁", "瓶", 5.00);
-        Item item2 = new Item("ITEM00002", "可乐", "瓶", 3.00);
-        Item item3 = new Item("ITEM00003", "苹果", "斤", 4.50);
-        Item item4 = new Item("ITEM00004", "雪碧", "瓶", 5.00);
-        Item item5 = new Item("ITEM00005", "方便面", "袋", 2.50);
+        Item item1 = new Item("ITEM000001", "橙汁", "瓶", 5.00);
+        Item item2 = new Item("ITEM000002", "可乐", "瓶", 3.00);
+        Item item3 = new Item("ITEM000003", "苹果", "斤", 4.50);
+        Item item4 = new Item("ITEM000004", "雪碧", "瓶", 5.00);
+        Item item5 = new Item("ITEM000005", "方便面", "袋", 2.50);
 
         items.add(item1);
         items.add(item2);
