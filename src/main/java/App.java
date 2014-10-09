@@ -46,6 +46,7 @@ public class App {
     public static void main(String[] args) {
         initItems();
         getInputs();
+        Cart cart = new Cart(items, inputs);
     }
 
 }
