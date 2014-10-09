@@ -7,11 +7,8 @@ import java.util.ArrayList;
 public class App {
 
     static ArrayList<Item> items = new ArrayList<Item>();
+    static ArrayList<String> inputs = new ArrayList<String>();
 
-    public static void main(String[] args) {
-        initItems();
-        ArrayList<String> cartInfo = readCartText();
-    }
     static void initItems(){
         Item item1 = new Item("ITEM00001", "橙汁", "瓶", 5.00);
         Item item2 = new Item("ITEM00002", "可乐", "瓶", 3.00);
@@ -29,8 +26,7 @@ public class App {
 //        }
     }
 
-    static ArrayList<String> readCartText(){
-        ArrayList<String> cartInfo = new ArrayList<String>();
+    static void getInputs(){
         try {
             File cartLocation = new File("/home/zhangzhihui/pos-java/src/main/resources/cart.txt");
             FileReader cartReader = new FileReader(cartLocation);
@@ -38,13 +34,18 @@ public class App {
 
             String line = null;
             while ((line = reader.readLine()) != null) {
-                cartInfo.add(line);
+                inputs.add(line);
             }
-//            System.out.println(cartInfo);
+            System.out.println(inputs);
             reader.close();
         } catch (IOException ex) {
             System.out.println("fail read file!");
         }
-        return cartInfo;
     }
+
+    public static void main(String[] args) {
+        initItems();
+        getInputs();
+    }
+
 }
