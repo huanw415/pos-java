@@ -15,6 +15,7 @@ public class Item {
         this.name = name;
         this.unit = unit;
         this.price = price;
+        this.getPromotions();
     }
     
     public void getPromotions() {
@@ -37,12 +38,12 @@ public class Item {
         promotionNames.add("discount_promotion");
 
         try {
-            File promotion1 = new File(promotionLocations.get(i));
-            FileReader promotion1Reader = new FileReader(promotion1);
-            BufferedReader reader1 = new BufferedReader(promotion1Reader);
+            File promotionLocation = new File(promotionLocations.get(i));
+            FileReader promotionReader = new FileReader(promotionLocation);
+            BufferedReader reader = new BufferedReader(promotionReader);
 
             String line = null;
-            while ((line = reader1.readLine()) != null) {
+            while ((line = reader.readLine()) != null) {
                 promotionText.add(line);
             }
             
@@ -50,6 +51,7 @@ public class Item {
             if (isExist) {
                 promotion.add(promotionNames.get(i));
             }
+            reader.close();
         } catch (IOException ex) {
             System.out.println("fail read file!");
         }
