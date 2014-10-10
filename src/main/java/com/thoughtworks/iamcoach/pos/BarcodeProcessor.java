@@ -17,24 +17,28 @@ public class BarcodeProcessor {
         double numbers[] = new double[items.size()];
         for(int i=0; i<items.size(); i++){
             for(int j=0; j<inputs.size(); j++){
-
                 boolean canSplit = inputs.get(j).contains("-");
                 if(canSplit){
-                    String[] barcodeAndNumber = inputs.get(j).split("-");
-                    if(items.get(i).barcode.equals(barcodeAndNumber[0])){
-                        double number = Double.parseDouble(barcodeAndNumber[1]);
-                        numbers[i] = number;
-                    }
+                   numbers[i] +=  processSplitedBarcode(i, j);
                 }else{
                     if(items.get(i).barcode.equals(inputs.get(j))){
                         numbers[i] += 1;
                     }
-
                 }
             }
         }
+//        System.out.println(numbers[2]);
         return numbers;
     }
 
+    private double processSplitedBarcode(int i, int j){
+        double number = 0;
+
+        String[] barcodeAndNumber = inputs.get(j).split("-");
+        if(items.get(i).barcode.equals(barcodeAndNumber[0])){
+            number = Double.parseDouble(barcodeAndNumber[1]);
+        }
+        return number;
+    }
 }
 
