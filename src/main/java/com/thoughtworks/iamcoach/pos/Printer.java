@@ -10,13 +10,22 @@ public class Printer {
         this.cartItems = cartItems;
     }
 
+    public void printAllInfo(){
+        printShopName();
+        printDate();
+        printAllCartItems();
+        printTotal();
+    }
+
     public void printShopName(){
         System.out.println("        ********Let's Go 购物清单*********");
     }
+
     public void printDate(){
         Date date = new Date();
         System.out.println(date);
     }
+
     public void printAllCartItems(){
         System.out.println("************************************************");
         for(int i=0; i<cartItems.size(); i++){
