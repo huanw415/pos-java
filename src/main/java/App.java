@@ -28,7 +28,7 @@ public class App {
 
     static void getInputs(){
         try {
-            File cartLocation = new File("/home/zhangzhihui/pos-java/src/main/resources/cart.txt");
+            File cartLocation = new File("src/main/resources/cart.txt");
             FileReader cartReader = new FileReader(cartLocation);
             BufferedReader reader = new BufferedReader(cartReader);
 
@@ -36,7 +36,7 @@ public class App {
             while ((line = reader.readLine()) != null) {
                 inputs.add(line);
             }
- //           System.out.println(inputs);
+//            System.out.println(inputs);
             reader.close();
         } catch (IOException ex) {
             System.out.println("fail read file!");
