@@ -1,4 +1,3 @@
-//import com.thoughtworks.iamcoach.pos.Cart;
 import com.thoughtworks.iamcoach.pos.BarcodeProcessor;
 import com.thoughtworks.iamcoach.pos.CartItem;
 import com.thoughtworks.iamcoach.pos.Item;
@@ -14,7 +13,7 @@ public class App {
 
     public static ArrayList<CartItem> cartItems = new ArrayList<CartItem>();
 
-    public static void main(String[] args) {
+    public static void main(String[] args){
 
         initItems();
         getInputs();
