@@ -1,7 +1,7 @@
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import com.thoughtworks.iamcoach.pos.Cart;
+import com.thoughtworks.iamcoach.pos.Item;
+
+import java.io.*;
 import java.util.ArrayList;
 
 public class App {
@@ -36,7 +36,7 @@ public class App {
             while ((line = reader.readLine()) != null) {
                 inputs.add(line);
             }
-            System.out.println(inputs);
+ //           System.out.println(inputs);
             reader.close();
         } catch (IOException ex) {
             System.out.println("fail read file!");
