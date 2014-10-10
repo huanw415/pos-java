@@ -5,29 +5,37 @@ import java.util.ArrayList;
 public class BarcodeProcessor {
 
     public ArrayList<String> barcodes = new ArrayList<String>();
+    private ArrayList<Item> items = new ArrayList<Item>();
+    private ArrayList<String> inputs = new ArrayList<String>();
 
-    public BarcodeProcessor(ArrayList<String> inputs){
-        this.getBarcodes(inputs);
+    public BarcodeProcessor(ArrayList<String> inputs, ArrayList<Item> items){
+//        this.getBarcodes(inputs, );
+        this.inputs = inputs;
+        this.items = items;
     }
 
-    private void getBarcodes(ArrayList<String> inputs) {
-        for(int i = 0; i < inputs.size(); i++) {
+    public double[] getNumbers() {
 
-            String[] barcodeAndNumber = inputs.get(i).split("-");
-            String barcode = barcodeAndNumber[0];
-            double number;
-            if (barcodeAndNumber.length == 1) {
-                number = 1;
-            } else {
-                number = Double.parseDouble(barcodeAndNumber[1]);
-            }
+        double numbers[] = new double[items.size()];
+        for(int i=0; i<items.size(); i++){
+            for(int j=0; j<inputs.size(); j++){
 
-            int count = (int) number;
-            for(int j = 0; j < count; j++){
-                barcodes.add(barcode);
-//                System.out.println(barcodes);
+                boolean canSplit = inputs.get(j).contains("-");
+                if(canSplit){
+                    String[] barcodeAndNumber = inputs.get(j).split("-");
+                    if(items.get(i).barcode.equals(barcodeAndNumber[0])){
+                        double number = Double.parseDouble(barcodeAndNumber[1]);
+                        numbers[i] = number;
+                    }
+                }else{
+                    if(items.get(i).barcode.equals(inputs.get(j))){
+                        numbers[i] += 1;
+                    }
+
+                }
             }
         }
+        return numbers;
     }
 
 }
