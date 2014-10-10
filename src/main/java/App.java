@@ -39,9 +39,6 @@ public class App {
         items.add(item3);
         items.add(item4);
         items.add(item5);
-//        for(Item item: items){
-//            System.out.println(item.name);
-//        }
     }
 
     private static void getInputs(){
@@ -54,7 +51,6 @@ public class App {
             while ((line = reader.readLine()) != null) {
                 inputs.add(line);
             }
-//            System.out.println(inputs);
             reader.close();
         } catch (IOException ex) {
             System.out.println("fail read file!");

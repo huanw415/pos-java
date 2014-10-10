@@ -25,7 +25,6 @@ public class BarcodeProcessor {
                 }
             }
         }
-//        System.out.println(numbers[0]);
         return numbers;
     }
 

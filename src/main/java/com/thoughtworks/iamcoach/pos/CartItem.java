@@ -74,7 +74,6 @@ public class CartItem extends Item{
         } catch (IOException ex) {
             System.out.println("fail read file!");
         }
-//        System.out.println(promotionText);
         return promotionText;
     }
 }
