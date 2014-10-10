@@ -2,6 +2,7 @@ package com.thoughtworks.iamcoach.pos;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class CartItem extends Item{
     public double num;
@@ -14,16 +15,25 @@ public class CartItem extends Item{
     }
 
     public double getSubTotal(){
-        //promotion
-
-        return 0;
+        ArrayList<Double> allSubTotals = new ArrayList<Double>();
+        for(int i=0; i<promotion.size(); i++){
+            if(promotion.get(i).equals("buy_two_get_one_free_promotion")){
+                allSubTotals.add(caculate_buy_two_get_one_free_promotion());
+            }
+            if(promotion.get(i).equals("second_half_price_promotion")){
+                allSubTotals.add(caculate_second_half_price_promotion());
+            }
+            if(promotion.get(i).equals("discount_promotion")){
+                allSubTotals.add(caculate_discount_promotion());
+            }
+        }
+        return Collections.min(allSubTotals);
     }
     private double caculate_buy_two_get_one_free_promotion(){
 
         double promotionNumber = ((int) num)/3;
         double actualNumber = num - promotionNumber;
         return actualNumber * price;
-//        return subTotals;
     }
 
     private double caculate_second_half_price_promotion(){
@@ -31,7 +41,6 @@ public class CartItem extends Item{
         double promotionNumber = ((int) num)/2;
         double actualNumber = (num - promotionNumber) + promotionNumber/2;
         return actualNumber * price;
-//        return subTotals;
     }
 
     private double caculate_discount_promotion(){
