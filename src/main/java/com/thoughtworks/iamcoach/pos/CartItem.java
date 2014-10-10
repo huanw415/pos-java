@@ -6,7 +6,6 @@ import java.util.Collections;
 
 public class CartItem extends Item{
     public double num;
-    public double subTotal;
 
     public CartItem(Item item, double num){
         super(item.barcode, item.name, item.unit, item.price);
