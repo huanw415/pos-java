@@ -1,5 +1,8 @@
-import com.thoughtworks.iamcoach.pos.Cart;
+//import com.thoughtworks.iamcoach.pos.Cart;
+import com.thoughtworks.iamcoach.pos.BarcodeProcessor;
+import com.thoughtworks.iamcoach.pos.CartItem;
 import com.thoughtworks.iamcoach.pos.Item;
+import com.thoughtworks.iamcoach.pos.Printer;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -9,11 +12,20 @@ public class App {
     public static ArrayList<Item> items = new ArrayList<Item>();
     public static ArrayList<String> inputs = new ArrayList<String>();
 
+    public static ArrayList<CartItem> cartItems = new ArrayList<CartItem>();
+
     public static void main(String[] args) {
 
         initItems();
         getInputs();
-        Cart cart = new Cart(items, inputs);
+        BarcodeProcessor barcodeProcessor = new BarcodeProcessor(inputs, items);
+
+        double[] numbers = barcodeProcessor.getNumbers();
+        CartItem cartItem = new CartItem(items.get(0), numbers[0]);
+        cartItems.add(cartItem);
+
+        Printer printer = new Printer(cartItems);
+        printer.printAllInfo();
     }
 
     private static void initItems(){
