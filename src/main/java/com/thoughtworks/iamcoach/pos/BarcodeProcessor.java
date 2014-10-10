@@ -4,12 +4,10 @@ import java.util.ArrayList;
 
 public class BarcodeProcessor {
 
-    public ArrayList<String> barcodes = new ArrayList<String>();
     private ArrayList<Item> items = new ArrayList<Item>();
     private ArrayList<String> inputs = new ArrayList<String>();
 
     public BarcodeProcessor(ArrayList<String> inputs, ArrayList<Item> items){
-//        this.getBarcodes(inputs, );
         this.inputs = inputs;
         this.items = items;
     }
