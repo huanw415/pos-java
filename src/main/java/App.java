@@ -6,10 +6,17 @@ import java.util.ArrayList;
 
 public class App {
 
-    static ArrayList<Item> items = new ArrayList<Item>();
-    static ArrayList<String> inputs = new ArrayList<String>();
+    public static ArrayList<Item> items = new ArrayList<Item>();
+    public static ArrayList<String> inputs = new ArrayList<String>();
 
-    static void initItems(){
+    public static void main(String[] args) {
+
+        initItems();
+        getInputs();
+        Cart cart = new Cart(items, inputs);
+    }
+
+    private static void initItems(){
         Item item1 = new Item("ITEM000001", "橙汁", "瓶", 5.00);
         Item item2 = new Item("ITEM000002", "可乐", "瓶", 3.00);
         Item item3 = new Item("ITEM000003", "苹果", "斤", 4.50);
@@ -26,7 +33,7 @@ public class App {
 //        }
     }
 
-    static void getInputs(){
+    private static void getInputs(){
         try {
             File cartLocation = new File("src/main/resources/cart.txt");
             FileReader cartReader = new FileReader(cartLocation);
@@ -43,10 +50,5 @@ public class App {
         }
     }
 
-    public static void main(String[] args) {
-        initItems();
-        getInputs();
-        Cart cart = new Cart(items, inputs);
-    }
 
 }
