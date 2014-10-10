@@ -37,12 +37,7 @@ public class Printer {
         System.out.println("************************************************");
     }
 
-    public void printTotal(){
-
-        double actutaTotal = 0;
-        for(int i=0; i<cartItems.size(); i++){
-            actutaTotal += cartItems.get(i).getSubTotal();
-        }
+    private void printTotal(){
 
         double total = 0;
         for(int i=0; i<cartItems.size(); i++){
@@ -51,7 +46,16 @@ public class Printer {
         }
 
         System.out.println("优惠前：" + total + "元");
-        System.out.println("优惠金额：" + (total - actutaTotal) + "元");
-        System.out.println("总计：" + actutaTotal + "元");
+        System.out.println("优惠金额：" + (total - getActutalTotal()) + "元");
+        System.out.println("总计：" + getActutalTotal() + "元");
     }
+
+    private double getActutalTotal(){
+        double actutalTotal = 0;
+
+        for(int i=0; i<cartItems.size(); i++){
+            actutalTotal += cartItems.get(i).getSubTotal();
+        }
+        return actutalTotal;
+    }t 
 }
