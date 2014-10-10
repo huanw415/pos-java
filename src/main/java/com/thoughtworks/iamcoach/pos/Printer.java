@@ -31,7 +31,7 @@ public class Printer {
         for(int i=0; i<cartItems.size(); i++){
             System.out.println("名称：" + cartItems.get(i).name + "   数量：" + cartItems.get(i).num
                     + "   单价：" + cartItems.get(i).price + "   单位：" + cartItems.get(i).unit
-                    + "   小计：" + cartItems.get(i).getSubTotal()
+                    + "   小计：" + cartItems.get(i).getSubTotal() + "元"
             );
         }
         System.out.println("************************************************");
@@ -50,8 +50,8 @@ public class Printer {
             total += actualSubTotal;
         }
 
-        System.out.println("优惠前：" + total);
-        System.out.println("优惠金额：" + (total - actutaTotal));
-        System.out.println("总计：" + actutaTotal);
+        System.out.println("优惠前：" + total + "元");
+        System.out.println("优惠金额：" + (total - actutaTotal) + "元");
+        System.out.println("总计：" + actutaTotal + "元");
     }
 }
