@@ -1,5 +1,7 @@
 package com.thoughtworks.iamcoach.pos;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -19,11 +21,17 @@ public class Printer {
 
     public void printShopName(){
         System.out.println("        ********Let's Go 购物清单*********");
+        System.out.println("----------------------------------------------------------");
     }
 
     public void printDate(){
         Date date = new Date();
-        System.out.println(date);
+
+        String time = String.format("%tr", date);
+        java.text.DateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
+        String s = format1.format(date);
+
+        System.out.println(s + "    " + time);
     }
 
     public void printAllCartItems(){
@@ -42,6 +50,7 @@ public class Printer {
         System.out.println("优惠前：" + getTotal() + "元");
         System.out.println("优惠金额：" + (getTotal() - getActutalTotal()) + "元");
         System.out.println("总计：" + getActutalTotal() + "元");
+        System.out.println("----------------------------------------------------------");
     }
 
     private double getActutalTotal(){
@@ -53,7 +62,7 @@ public class Printer {
         return actutalTotal;
     }
 
-    private  double getTotal(){
+    private double getTotal(){
 
         double total = 0;
         for(int i=0; i<cartItems.size(); i++){
