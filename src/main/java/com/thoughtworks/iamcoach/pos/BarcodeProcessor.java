@@ -21,13 +21,11 @@ public class BarcodeProcessor {
                 if(canSplit){
                    numbers[i] +=  processSplitedBarcode(i, j);
                 }else{
-                    if(items.get(i).barcode.equals(inputs.get(j))){
-                        numbers[i] += 1;
-                    }
+                    numbers[i] += processBarcode(i, j);
                 }
             }
         }
-//        System.out.println(numbers[2]);
+//        System.out.println(numbers[0]);
         return numbers;
     }
 
@@ -39,6 +37,13 @@ public class BarcodeProcessor {
             number = Double.parseDouble(barcodeAndNumber[1]);
         }
         return number;
+    }
+
+    private double processBarcode(int i, int j){
+        if(items.get(i).barcode.equals(inputs.get(j))){
+            return 1.0;
+        }
+        return 0.0;
     }
 }
 
