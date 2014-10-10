@@ -7,7 +7,6 @@ public class CartItem extends Item{
 
     CartItem(Item item){
        super(item.barcode, item.name, item.unit, item.price);
-
     }
 
 }
