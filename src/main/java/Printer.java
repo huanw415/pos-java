@@ -24,13 +24,13 @@ public class Printer {
     }
 
     public void printDate(){
-        Date date = new Date();
+        Date dateAndTime = new Date();
 
-        String time = String.format("%tr", date);
         java.text.DateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
-        String s = format1.format(date);
+        String date = format1.format(dateAndTime);
+        String time = String.format("%tr", dateAndTime);
 
-        System.out.println(s + "    " + time);
+        System.out.println(date + "    " + time);
     }
 
     public void printAllCartItems(){
