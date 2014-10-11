@@ -4,19 +4,18 @@ import com.thoughtworks.iamcoach.pos.Item;
 import com.thoughtworks.iamcoach.pos.Printer;
 
 import java.io.*;
+import java.nio.file.*;
 import java.util.ArrayList;
 
 public class App {
-
-
-    public static ArrayList<String> inputs = new ArrayList<String>();
 
     public static ArrayList<CartItem> cartItems = new ArrayList<CartItem>();
 
     public static void main(String[] args){
 
         ArrayList<Item> items = getItems();
-        getInputs();
+        ArrayList<String> inputs = getInputs();
+
         BarcodeProcessor barcodeProcessor = new BarcodeProcessor(inputs, items);
 
         double[] numbers = barcodeProcessor.getNumbers();
@@ -39,20 +38,17 @@ public class App {
         return items;
     }
 
-    private static void getInputs(){
-        try {
-            File cartLocation = new File("src/main/resources/cart.txt");
-            FileReader cartReader = new FileReader(cartLocation);
-            BufferedReader reader = new BufferedReader(cartReader);
+    private static ArrayList<String> getInputs(){
+        ArrayList<String> inputs = new ArrayList<String>();
 
-            String line = null;
-            while ((line = reader.readLine()) != null) {
-                inputs.add(line);
-            }
-            reader.close();
+        try {
+            Path path = FileSystems.getDefault().getPath("src/main/resources/", "cart.txt");
+            inputs = (ArrayList<String>) Files.readAllLines(path);
         } catch (IOException ex) {
             System.out.println("fail read file!");
         }
+        
+        return inputs;
     }
 
 
