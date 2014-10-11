@@ -28,8 +28,6 @@ public class Cart {
         double[] numbers = getNumbers();
         for(int i=0; i<numbers.length; i++){
             if(numbers[i] != 0){
-                System.out.println(items.get(i));
-
                 cartItems.add(new CartItem(items.get(i), numbers[i]));
             }
         }
