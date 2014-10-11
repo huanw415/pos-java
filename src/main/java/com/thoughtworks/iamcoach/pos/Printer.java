@@ -37,8 +37,8 @@ public class Printer {
     public void printAllCartItems(){
         System.out.println("************************************************");
         for(int i=0; i<cartItems.size(); i++){
-            System.out.println("名称：" + cartItems.get(i).name + "   数量：" + cartItems.get(i).num
-                    + "   单价：" + cartItems.get(i).price + "元" + "   单位：" + cartItems.get(i).unit
+            System.out.println("名称：" + cartItems.get(i).getName() + "   数量：" + cartItems.get(i).num
+                    + "   单价：" + cartItems.get(i).getPrice() + "元" + "   单位：" + cartItems.get(i).getUnit()
                     + "   小计：" + cartItems.get(i).getSubTotal() + "元"
             );
         }
@@ -66,7 +66,7 @@ public class Printer {
 
         double total = 0;
         for(int i=0; i<cartItems.size(); i++){
-            double actualSubTotal = cartItems.get(i).num * cartItems.get(i).price;
+            double actualSubTotal = cartItems.get(i).num * cartItems.get(i).getPrice();
             total += actualSubTotal;
         }
         return total;

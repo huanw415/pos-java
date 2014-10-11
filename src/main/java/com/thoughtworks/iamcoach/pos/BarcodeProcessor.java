@@ -32,14 +32,14 @@ public class BarcodeProcessor {
         double number = 0;
 
         String[] barcodeAndNumber = inputs.get(j).split("-");
-        if(items.get(i).barcode.equals(barcodeAndNumber[0])){
+        if(items.get(i).getBarcode().equals(barcodeAndNumber[0])){
             number = Double.parseDouble(barcodeAndNumber[1]);
         }
         return number;
     }
 
     private double processBarcode(int i, int j){
-        if(items.get(i).barcode.equals(inputs.get(j))){
+        if(items.get(i).getBarcode().equals(inputs.get(j))){
             return 1.0;
         }
         return 0.0;
