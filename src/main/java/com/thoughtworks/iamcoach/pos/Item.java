@@ -64,7 +64,6 @@ public class Item {
         for (int i = 0; i < promotionLocations.size(); i++) {
             getOnePromotion(promotionLocations, i);
         }
-        System.out.println(promotion);
     }
     
     private void getOnePromotion(ArrayList<Path> promotionLocations, int i) {
