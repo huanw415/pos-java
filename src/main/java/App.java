@@ -1,10 +1,5 @@
-import com.thoughtworks.iamcoach.pos.BarcodeProcessor;
-import com.thoughtworks.iamcoach.pos.CartItem;
-import com.thoughtworks.iamcoach.pos.Item;
-import com.thoughtworks.iamcoach.pos.Printer;
-
-import java.io.*;
-import java.nio.file.*;
+import com.thoughtworks.iamcoach.pos.*;
+ 
 import java.util.ArrayList;
 
 public class App {
@@ -12,17 +7,12 @@ public class App {
     public static void main(String[] args){
 
         ArrayList<Item> items = getItems();
-        ArrayList<String> inputs = getInputs();
+        Scanner scanner = new Scanner();
+        ArrayList<String> inputs = scanner.getInputs();
 
-        BarcodeProcessor barcodeProcessor = new BarcodeProcessor(inputs, items);
+        Cart cart = new Cart(inputs, items);
 
-        double[] numbers = barcodeProcessor.getNumbers();
-        
-        ArrayList<CartItem> cartItems = new ArrayList<CartItem>();
-        CartItem cartItem = new CartItem(items.get(0), numbers[0]);
-        cartItems.add(cartItem);
-
-        Printer printer = new Printer(cartItems);
+        Printer printer = new Printer(cart.getCartItems());
         printer.printAllInfo();
     }
 
@@ -37,19 +27,5 @@ public class App {
 
         return items;
     }
-
-    private static ArrayList<String> getInputs(){
-        ArrayList<String> inputs = new ArrayList<String>();
-
-        try {
-            Path path = FileSystems.getDefault().getPath("src/main/resources/", "cart.txt");
-            inputs = (ArrayList<String>) Files.readAllLines(path);
-        } catch (IOException ex) {
-            System.out.println("fail read file!");
-        }
-
-        return inputs;
-    }
-
 
 }
