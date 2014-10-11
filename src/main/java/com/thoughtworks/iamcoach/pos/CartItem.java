@@ -29,13 +29,13 @@ public class CartItem extends Item{
 
         for(int i=0; i<getPromotion().size(); i++){
             if(getPromotion().get(i).equals("buy_two_get_one_free_promotion")){
-                allSubTotals.add(promotionCalculator.caculate_buy_two_get_one_free_promotion(cartItem));
+                allSubTotals.add(promotionCalculator.caLculateBuyTwoGetOneFreePromotion(cartItem));
             }
             if(getPromotion().get(i).equals("second_half_price_promotion")){
-                allSubTotals.add(promotionCalculator.caculate_second_half_price_promotion(cartItem));
+                allSubTotals.add(promotionCalculator.caLculateSecondHalfPricePromotion(cartItem));
             }
             if(getPromotion().get(i).equals("discount_promotion")){
-                allSubTotals.add(promotionCalculator.caculate_discount_promotion(cartItem));
+                allSubTotals.add(promotionCalculator.caLculateDiscountPromotion(cartItem));
             }
         }
         return Collections.min(allSubTotals);

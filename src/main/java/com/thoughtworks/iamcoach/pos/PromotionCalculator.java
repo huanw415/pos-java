@@ -5,21 +5,21 @@ import java.util.ArrayList;
 
 public class PromotionCalculator {
 
-    public double caculate_buy_two_get_one_free_promotion(CartItem cartItem){
+    public double caLculateBuyTwoGetOneFreePromotion(CartItem cartItem){
 
         double promotionNumber = ((int) cartItem.getNum())/3;
         double actualNumber = cartItem.getNum() - promotionNumber;
         return actualNumber * cartItem.getPrice();
     }
 
-    public double caculate_second_half_price_promotion(CartItem cartItem){
+    public double caLculateSecondHalfPricePromotion(CartItem cartItem){
 
         double promotionNumber = ((int) cartItem.getNum())/2;
         double actualNumber = (cartItem.getNum() - promotionNumber) + promotionNumber/2;
         return actualNumber * cartItem.getPrice();
     }
 
-    public double caculate_discount_promotion(CartItem cartItem){
+    public double caLculateDiscountPromotion(CartItem cartItem){
         double discount = getDiscount(cartItem);
         return cartItem.getNum() * discount * cartItem.getPrice();
     }
