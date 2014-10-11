@@ -1,9 +1,7 @@
 package com.thoughtworks.iamcoach.pos;
 
 import java.io.*;
-import java.nio.file.FileSystems;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import java.nio.file.*;
 import java.util.ArrayList;
 
 public class Item {
