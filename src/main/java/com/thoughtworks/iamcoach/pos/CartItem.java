@@ -5,12 +5,19 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class CartItem extends Item{
-    public double num;
+    private double num;
 
     public CartItem(Item item, double num){
         super(item.getBarcode(), item.getName(), item.getUnit(), item.getPrice());
-        this.num = num;
+        this.setNum(num);
 
+    }
+
+    public double getNum(){
+        return this.num;
+    }
+    public void setNum(double num){
+        this.num = num;
     }
 
     public double getSubTotal(){
