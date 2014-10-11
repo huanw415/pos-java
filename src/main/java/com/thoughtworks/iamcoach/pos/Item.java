@@ -1,6 +1,9 @@
 package com.thoughtworks.iamcoach.pos;
 
 import java.io.*;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 
 public class Item {
@@ -21,17 +24,19 @@ public class Item {
     }
     
     public void getPromotions() {
-        ArrayList<String> promotionLocations = new ArrayList<String>();
-        promotionLocations.add("src/main/resources/buy_two_get_one_free_promotion.txt");
-        promotionLocations.add("src/main/resources/second_half_price_promotion.txt");
-        promotionLocations.add("src/main/resources/discount_promotion.txt");
+
+        ArrayList<Path> promotionLocations = new ArrayList<Path>();
+        promotionLocations.add(FileSystems.getDefault().getPath("src/main/resources/", "buy_two_get_one_free_promotion.txt"));
+        promotionLocations.add(FileSystems.getDefault().getPath("src/main/resources/", "second_half_price_promotion.txt"));
+        promotionLocations.add(FileSystems.getDefault().getPath("src/main/resources/", "discount_promotion.txt"));
 
         for (int i = 0; i < promotionLocations.size(); i++) {
             getOnePromotion(promotionLocations, i);
         }
+        System.out.println(promotion);
     }
     
-    private void getOnePromotion(ArrayList<String> promotionLocations, int i) {
+    private void getOnePromotion(ArrayList<Path> promotionLocations, int i) {
 
         ArrayList<String> promotionNames = new ArrayList<String>();
         promotionNames.add("buy_two_get_one_free_promotion");
@@ -39,22 +44,24 @@ public class Item {
         promotionNames.add("discount_promotion");
 
         try {
-            File promotionLocation = new File(promotionLocations.get(i));
-            FileReader promotionReader = new FileReader(promotionLocation);
-            BufferedReader reader = new BufferedReader(promotionReader);
+            promotionText = (ArrayList<String>) Files.readAllLines(promotionLocations.get(i));
 
-            String line = null;
-            while ((line = reader.readLine()) != null) {
-                promotionText.add(line);
-            }
-            
-            boolean isExist = promotionText.contains(barcode);
+            ArrayList<String> barcodes = splitPromotionText();
+            boolean isExist = barcodes.contains(barcode);
             if (isExist) {
                 promotion.add(promotionNames.get(i));
             }
-            reader.close();
         } catch (IOException ex) {
             System.out.println("fail read file!");
         }
-    }   
+    }
+
+    private ArrayList<String> splitPromotionText(){
+        ArrayList<String> barcodes = new ArrayList<String>();
+        for(String aPromotionText: promotionText){
+            String[] barcodeAndDiscount = aPromotionText.split(":");
+            barcodes.add(barcodeAndDiscount[0]);
+        }
+        return barcodes;
+    }
 }
