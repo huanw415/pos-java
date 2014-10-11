@@ -1,6 +1,9 @@
 package com.thoughtworks.iamcoach.pos;
 
 import java.io.*;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 
 public class PromotionCalculator {
@@ -39,15 +42,8 @@ public class PromotionCalculator {
 
         ArrayList<String> promotionText = new ArrayList<String>();
         try {
-            File discountPromotion = new File("src/main/resources/discount_promotion.txt");
-            FileReader discountPromotionReader = new FileReader(discountPromotion);
-            BufferedReader reader = new BufferedReader(discountPromotionReader);
-
-            String line = null;
-            while ((line = reader.readLine()) != null) {
-                promotionText.add(line);
-            }
-            reader.close();
+            Path path = FileSystems.getDefault().getPath("src/main/resources/", "discount_promotion.txt");
+            promotionText = (ArrayList<String>) Files.readAllLines(path);
         } catch (IOException ex) {
             System.out.println("fail read file!");
         }
