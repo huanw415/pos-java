@@ -9,8 +9,6 @@ import java.util.ArrayList;
 
 public class App {
 
-    public static ArrayList<CartItem> cartItems = new ArrayList<CartItem>();
-
     public static void main(String[] args){
 
         ArrayList<Item> items = getItems();
@@ -19,6 +17,8 @@ public class App {
         BarcodeProcessor barcodeProcessor = new BarcodeProcessor(inputs, items);
 
         double[] numbers = barcodeProcessor.getNumbers();
+        
+        ArrayList<CartItem> cartItems = new ArrayList<CartItem>();
         CartItem cartItem = new CartItem(items.get(0), numbers[0]);
         cartItems.add(cartItem);
 
@@ -47,7 +47,7 @@ public class App {
         } catch (IOException ex) {
             System.out.println("fail read file!");
         }
-        
+
         return inputs;
     }
 
