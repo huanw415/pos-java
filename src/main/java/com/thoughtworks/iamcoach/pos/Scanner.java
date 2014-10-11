@@ -6,8 +6,6 @@ import java.util.ArrayList;
 
 public class Scanner {
 
-//    private ArrayList<String> inputs = getInputs();
-
     public ArrayList<String> getInputs(){
         ArrayList<String> inputs = new ArrayList<String>();
 
