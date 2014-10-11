@@ -2,12 +2,12 @@ package com.thoughtworks.iamcoach.pos;
 
 import java.util.ArrayList;
 
-public class BarcodeProcessor {
+public class Cart {
 
     private ArrayList<Item> items = new ArrayList<Item>();
     private ArrayList<String> inputs = new ArrayList<String>();
 
-    public BarcodeProcessor(ArrayList<String> inputs, ArrayList<Item> items){
+    public Cart(ArrayList<String> inputs, ArrayList<Item> items){
         this.inputs = inputs;
         this.items = items;
     }
