@@ -6,13 +6,36 @@ public class Cart {
 
     private ArrayList<Item> items = new ArrayList<Item>();
     private ArrayList<String> inputs = new ArrayList<String>();
+    private ArrayList<CartItem> cartItems = new ArrayList<CartItem>();
+
 
     public Cart(ArrayList<String> inputs, ArrayList<Item> items){
         this.inputs = inputs;
         this.items = items;
+        this.setCartItems(this.generateCartItems());
     }
 
-    public double[] getNumbers() {
+    public ArrayList<CartItem> getCartItems(){
+        return this.cartItems;
+    }
+
+    public void setCartItems(ArrayList<CartItem> cartItems){
+        this.cartItems = cartItems;
+    }
+
+    public ArrayList<CartItem> generateCartItems(){
+        ArrayList<CartItem> cartItems = new ArrayList<CartItem>();
+        double[] numbers = getNumbers();
+        for(int i=0; i<numbers.length; i++){
+            if(numbers[i] != 0){
+                System.out.println(items.get(i));
+
+                cartItems.add(new CartItem(items.get(i), numbers[i]));
+            }
+        }
+        return cartItems;
+    }
+    private double[] getNumbers() {
 
         double numbers[] = new double[items.size()];
         for(int i=0; i<items.size(); i++){
