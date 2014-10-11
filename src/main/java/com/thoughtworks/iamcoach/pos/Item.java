@@ -15,10 +15,6 @@ public class Item {
 
 
     public Item(String barcode, String name, String unit, double price){
-//        this.barcode = barcode;
-//        this.name = name;
-//        this.unit = unit;
-//        this.price = price;
         this.setBarcode(barcode);
         this.setName(name);
         this.setUnit(unit);

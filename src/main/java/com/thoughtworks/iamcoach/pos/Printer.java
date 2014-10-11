@@ -1,6 +1,5 @@
 package com.thoughtworks.iamcoach.pos;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
