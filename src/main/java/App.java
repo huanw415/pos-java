@@ -8,14 +8,14 @@ import java.util.ArrayList;
 
 public class App {
 
-    public static ArrayList<Item> items = new ArrayList<Item>();
+
     public static ArrayList<String> inputs = new ArrayList<String>();
 
     public static ArrayList<CartItem> cartItems = new ArrayList<CartItem>();
 
     public static void main(String[] args){
 
-        initItems();
+        ArrayList<Item> items = getItems();
         getInputs();
         BarcodeProcessor barcodeProcessor = new BarcodeProcessor(inputs, items);
 
@@ -27,18 +27,16 @@ public class App {
         printer.printAllInfo();
     }
 
-    private static void initItems(){
-        Item item1 = new Item("ITEM000001", "橙汁", "瓶", 5.00);
-        Item item2 = new Item("ITEM000002", "可乐", "瓶", 3.00);
-        Item item3 = new Item("ITEM000003", "苹果", "斤", 4.50);
-        Item item4 = new Item("ITEM000004", "雪碧", "瓶", 5.00);
-        Item item5 = new Item("ITEM000005", "方便面", "袋", 2.50);
+    private static ArrayList<Item> getItems(){
+        ArrayList<Item> items = new ArrayList<Item>();
 
-        items.add(item1);
-        items.add(item2);
-        items.add(item3);
-        items.add(item4);
-        items.add(item5);
+        items.add(new Item("ITEM000001", "橙汁", "瓶", 5.00));
+        items.add(new Item("ITEM000002", "可乐", "瓶", 3.00));
+        items.add(new Item("ITEM000003", "苹果", "斤", 4.50));
+        items.add(new Item("ITEM000004", "雪碧", "瓶", 5.00));
+        items.add(new Item("ITEM000005", "方便面", "袋", 2.50));
+
+        return items;
     }
 
     private static void getInputs(){
