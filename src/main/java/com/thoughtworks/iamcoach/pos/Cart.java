@@ -8,7 +8,6 @@ public class Cart {
     private ArrayList<String> inputs = new ArrayList<String>();
     private ArrayList<CartItem> cartItems = new ArrayList<CartItem>();
 
-
     public Cart(ArrayList<String> inputs, ArrayList<Item> items){
         this.inputs = inputs;
         this.items = items;
@@ -23,7 +22,7 @@ public class Cart {
         this.cartItems = cartItems;
     }
 
-    public ArrayList<CartItem> generateCartItems(){
+    private ArrayList<CartItem> generateCartItems(){
         ArrayList<CartItem> cartItems = new ArrayList<CartItem>();
         double[] numbers = getNumbers();
         for(int i=0; i<numbers.length; i++){
@@ -33,6 +32,7 @@ public class Cart {
         }
         return cartItems;
     }
+
     private double[] getNumbers() {
 
         double numbers[] = new double[items.size()];
