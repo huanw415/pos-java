@@ -18,5 +18,4 @@ public class Scanner {
 
         return inputs;
     }
-
 }

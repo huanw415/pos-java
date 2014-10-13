@@ -55,7 +55,6 @@ public class Item {
     }
 
     private void generatePromotions() {
-
         ArrayList<Path> promotionLocations = new ArrayList<Path>();
         promotionLocations.add(FileSystems.getDefault().getPath("src/main/resources/", "buy_two_get_one_free_promotion.txt"));
         promotionLocations.add(FileSystems.getDefault().getPath("src/main/resources/", "second_half_price_promotion.txt"));
@@ -67,7 +66,6 @@ public class Item {
     }
     
     private void generateOnePromotion(ArrayList<Path> promotionLocations, int i) {
-
         ArrayList<String> promotionNames = new ArrayList<String>();
         promotionNames.add("buy_two_get_one_free_promotion");
         promotionNames.add("second_half_price_promotion");
@@ -88,6 +86,7 @@ public class Item {
 
     private ArrayList<String> splitPromotionText(){
         ArrayList<String> barcodes = new ArrayList<String>();
+
         for(String aPromotionText: promotionText){
             String[] barcodeAndDiscount = aPromotionText.split(":");
             barcodes.add(barcodeAndDiscount[0]);

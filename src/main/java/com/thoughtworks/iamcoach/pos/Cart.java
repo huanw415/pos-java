@@ -21,7 +21,7 @@ public class Cart {
     private ArrayList<CartItem> generateCartItems(ArrayList<String> inputs, ArrayList<Item> items){
         ArrayList<CartItem> cartItems = new ArrayList<CartItem>();
         double[] numbers = getNumbers(inputs, items);
-        
+
         for(int i=0; i<numbers.length; i++){
             if(numbers[i] != 0){
                 cartItems.add(new CartItem(items.get(i), numbers[i]));
