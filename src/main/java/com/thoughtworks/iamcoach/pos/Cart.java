@@ -6,7 +6,7 @@ public class Cart {
 
     private ArrayList<CartItem> cartItems = new ArrayList<CartItem>();
 
-        public Cart(ArrayList<String> inputs, ArrayList<Item> items){
+    public Cart(ArrayList<String> inputs, ArrayList<Item> items){
         this.setCartItems(this.generateCartItems(inputs, items));
     }
 
