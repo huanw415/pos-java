@@ -30,8 +30,8 @@ public class PromotionCalculator {
     private double getDiscount(CartItem cartItem){
         double discount = 0;
         ArrayList<String> discountPromitions = getDiscountPromotion();
-        for(int i=0; i<discountPromitions.size(); i++){
-            String[] currentPromotion = discountPromitions.get(i).split(":");
+        for (String aDiscountPromotion: discountPromitions){
+            String[] currentPromotion = aDiscountPromotion.split(":");
             if(cartItem.getBarcode().equals(currentPromotion[0])){
                 discount = Double.parseDouble(currentPromotion[1])/100;
             }
