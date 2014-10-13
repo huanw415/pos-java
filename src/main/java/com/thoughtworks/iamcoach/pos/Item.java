@@ -19,7 +19,7 @@ public class Item {
         this.setName(name);
         this.setUnit(unit);
         this.setPrice(price);
-        this.getPromotions();
+        this.generatePromotions();
     }
 
     public String getName(){
@@ -54,7 +54,7 @@ public class Item {
         return this.promotion;
     }
 
-    public void getPromotions() {
+    public void generatePromotions() {
 
         ArrayList<Path> promotionLocations = new ArrayList<Path>();
         promotionLocations.add(FileSystems.getDefault().getPath("src/main/resources/", "buy_two_get_one_free_promotion.txt"));
@@ -62,11 +62,11 @@ public class Item {
         promotionLocations.add(FileSystems.getDefault().getPath("src/main/resources/", "discount_promotion.txt"));
 
         for (int i = 0; i < promotionLocations.size(); i++) {
-            getOnePromotion(promotionLocations, i);
+            generateOnePromotion(promotionLocations, i);
         }
     }
     
-    private void getOnePromotion(ArrayList<Path> promotionLocations, int i) {
+    private void generateOnePromotion(ArrayList<Path> promotionLocations, int i) {
 
         ArrayList<String> promotionNames = new ArrayList<String>();
         promotionNames.add("buy_two_get_one_free_promotion");
