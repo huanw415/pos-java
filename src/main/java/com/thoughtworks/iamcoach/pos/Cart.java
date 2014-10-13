@@ -4,14 +4,10 @@ import java.util.ArrayList;
 
 public class Cart {
 
-    private ArrayList<Item> items = new ArrayList<Item>();
-    private ArrayList<String> inputs = new ArrayList<String>();
     private ArrayList<CartItem> cartItems = new ArrayList<CartItem>();
 
-    public Cart(ArrayList<String> inputs, ArrayList<Item> items){
-        this.inputs = inputs;
-        this.items = items;
-        this.setCartItems(this.generateCartItems());
+        public Cart(ArrayList<String> inputs, ArrayList<Item> items){
+        this.setCartItems(this.generateCartItems(inputs, items));
     }
 
     public ArrayList<CartItem> getCartItems(){
@@ -22,9 +18,9 @@ public class Cart {
         this.cartItems = cartItems;
     }
 
-    private ArrayList<CartItem> generateCartItems(){
+    private ArrayList<CartItem> generateCartItems(ArrayList<String> inputs, ArrayList<Item> items){
         ArrayList<CartItem> cartItems = new ArrayList<CartItem>();
-        double[] numbers = getNumbers();
+        double[] numbers = getNumbers(inputs, items);
         for(int i=0; i<numbers.length; i++){
             if(numbers[i] != 0){
                 cartItems.add(new CartItem(items.get(i), numbers[i]));
@@ -33,23 +29,23 @@ public class Cart {
         return cartItems;
     }
 
-    private double[] getNumbers() {
+    private double[] getNumbers(ArrayList<String> inputs, ArrayList<Item> items) {
 
         double numbers[] = new double[items.size()];
         for(int i=0; i<items.size(); i++){
             for(int j=0; j<inputs.size(); j++){
                 boolean canSplit = inputs.get(j).contains("-");
                 if(canSplit){
-                   numbers[i] +=  processSplitedBarcode(i, j);
+                   numbers[i] +=  processSplitedBarcode(i, j, inputs, items);
                 }else{
-                    numbers[i] += processBarcode(i, j);
+                    numbers[i] += processBarcode(i, j, inputs, items);
                 }
             }
         }
         return numbers;
     }
 
-    private double processSplitedBarcode(int i, int j){
+    private double processSplitedBarcode(int i, int j, ArrayList<String> inputs, ArrayList<Item> items){
         double number = 0;
 
         String[] barcodeAndNumber = inputs.get(j).split("-");
@@ -59,7 +55,7 @@ public class Cart {
         return number;
     }
 
-    private double processBarcode(int i, int j){
+    private double processBarcode(int i, int j, ArrayList<String> inputs, ArrayList<Item> items){
         if(items.get(i).getBarcode().equals(inputs.get(j))){
             return 1.0;
         }
