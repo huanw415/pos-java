@@ -54,7 +54,7 @@ public class Item {
         return this.promotion;
     }
 
-    public void generatePromotions() {
+    private void generatePromotions() {
 
         ArrayList<Path> promotionLocations = new ArrayList<Path>();
         promotionLocations.add(FileSystems.getDefault().getPath("src/main/resources/", "buy_two_get_one_free_promotion.txt"));
