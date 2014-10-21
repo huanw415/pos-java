@@ -31,13 +31,19 @@ public class CartTest {
         return cartItem;
     }
 
-    @Test
-    public void can_get_cartItems(){
+    private ArrayList<String> getInputs(){
         ArrayList<String> inputs = new ArrayList<String>();
         inputs.add("ITEM000001-2");
+        return inputs;
+    }
+
+    @Test
+    public void can_get_cartItems(){
+//        ArrayList<String> inputs = new ArrayList<String>();
+//        inputs.add("ITEM000001-2");
+        ArrayList<String> inputs = getInputs();
 
         Item item = this.mock_Item();
-
         ArrayList<Item> items = new ArrayList<Item>();
         items.add(item);
 
@@ -48,8 +54,7 @@ public class CartTest {
 
     @Test
     public void can_set_cartItems(){
-        ArrayList<String> inputs = new ArrayList<String>();
-        inputs.add("ITEM000001-2");
+        ArrayList<String> inputs = getInputs();
 
         Item item = this.mock_Item();
         ArrayList<Item> items = new ArrayList<Item>();
