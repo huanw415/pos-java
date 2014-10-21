@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Printer {
-    public ArrayList<CartItem> cartItems = new ArrayList<CartItem>();
+    private ArrayList<CartItem> cartItems = new ArrayList<CartItem>();
 
     public Printer(ArrayList<CartItem> cartItems){
         this.cartItems = cartItems;
