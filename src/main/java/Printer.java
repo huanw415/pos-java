@@ -11,45 +11,49 @@ public class Printer {
         this.cartItems = cartItems;
     }
 
-    public void printAllInfo(){
-        printShopName();
-        printDate();
-        printAllCartItems();
-        printTotal();
+    public String printAllInfo(){
+        return printShopName() + "\n"
+                + printDate() + "\n"
+                + printAllCartItems() + "\n"
+                + printTotal();
+//        printShopName();
+//        printDate();
+//        printAllCartItems();
+//        printTotal();
     }
 
-    public void printShopName(){
-        System.out.println("        ********Let's Go 购物清单*********");
-        System.out.println("----------------------------------------------------------");
+    public String printShopName() {
+        return "        ********Let's Go 购物清单*********" + "\n"
+                + "----------------------------------------------------------";
     }
 
-    public void printDate(){
+    public String printDate(){
         Date dateAndTime = new Date();
 
         java.text.DateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
         String date = format1.format(dateAndTime);
         String time = String.format("%tr", dateAndTime);
 
-        System.out.println(date + "    " + time);
+        return "          " + date + "    " + time;
     }
 
-    public void printAllCartItems(){
-        System.out.println("************************************************");
-        for(int i=0; i<cartItems.size(); i++){
-            System.out.println("名称：" + cartItems.get(i).getName() + "   数量：" + cartItems.get(i).getNum()
-                            + "   单价：" + cartItems.get(i).getPrice() + "元" + "   单位：" + cartItems.get(i).getUnit()
-                            + "   小计：" + cartItems.get(i).getSubTotal() + "元"
-            );
+    public String printAllCartItems(){
+        String allCartItems = "************************************************" + "\n";
+        for (CartItem cartItem : cartItems) {
+            allCartItems += "名称：" + cartItem.getName() + "   数量：" + cartItem.getNum()
+                    + "   单价：" + cartItem.getPrice() + "元" + "   单位：" + cartItem.getUnit()
+                    + "   小计：" + cartItem.getSubTotal() + "元" +"\n";
+
         }
-        System.out.println("************************************************");
+        return allCartItems +="************************************************" + "\n";
     }
 
-    private void printTotal(){
+    private String printTotal(){
 
-        System.out.println("优惠前：" + getTotal() + "元");
-        System.out.println("优惠金额：" + (getTotal() - getActutalTotal()) + "元");
-        System.out.println("总计：" + getActutalTotal() + "元");
-        System.out.println("----------------------------------------------------------");
+        return  "优惠前：" + getTotal() + "元"
+                + "   优惠金额：" + (getTotal() - getActutalTotal()) + "元"
+                + "   总计：" + getActutalTotal() + "元" + "\n"
+                + "----------------------------------------------------------";
     }
 
     private double getActutalTotal(){

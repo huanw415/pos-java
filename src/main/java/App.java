@@ -13,7 +13,7 @@ public class App {
         Cart cart = new Cart(inputs, items);
 
         Printer printer = new Printer(cart.getCartItems());
-        printer.printAllInfo();
+        System.out.println(printer.printAllInfo());
     }
 
     private static ArrayList<Item> getItems(){
