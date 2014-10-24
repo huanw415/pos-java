@@ -18,12 +18,12 @@ public class Printer {
                 + printTotal();
     }
 
-    public String printShopName() {
+    private String printShopName() {
         return "        ********Let's Go 购物清单*********" + "\n"
                 + "----------------------------------------------------------";
     }
 
-    public String printDate(){
+    private String printDate(){
         Date dateAndTime = new Date();
 
         java.text.DateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
@@ -33,7 +33,7 @@ public class Printer {
         return "          " + date + "    " + time;
     }
 
-    public String printAllCartItems(){
+    private String printAllCartItems(){
         String allCartItems = "************************************************" + "\n";
         for (CartItem cartItem : cartItems) {
             allCartItems += "名称：" + cartItem.getName() + "   数量：" + cartItem.getNum()
