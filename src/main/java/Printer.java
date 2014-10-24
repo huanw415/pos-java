@@ -16,10 +16,6 @@ public class Printer {
                 + printDate() + "\n"
                 + printAllCartItems() + "\n"
                 + printTotal();
-//        printShopName();
-//        printDate();
-//        printAllCartItems();
-//        printTotal();
     }
 
     public String printShopName() {
