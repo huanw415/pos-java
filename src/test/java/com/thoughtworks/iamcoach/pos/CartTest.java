@@ -39,8 +39,6 @@ public class CartTest {
 
     @Test
     public void can_get_cartItems(){
-//        ArrayList<String> inputs = new ArrayList<String>();
-//        inputs.add("ITEM000001-2");
         ArrayList<String> inputs = getInputs();
 
         Item item = this.mock_Item();
