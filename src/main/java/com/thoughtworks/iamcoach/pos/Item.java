@@ -11,7 +11,7 @@ public class Item {
     private String unit;
     private double price;
     private ArrayList<String> promotion = new ArrayList<String>();
-    private ArrayList<String> promotionText = new ArrayList<String>();
+//    private ArrayList<String> promotionText = new ArrayList<String>();
 
 
     public Item(String barcode, String name, String unit, double price){
@@ -19,7 +19,9 @@ public class Item {
         this.setName(name);
         this.setUnit(unit);
         this.setPrice(price);
-        this.generatePromotions();
+        Promotion promotion = new Promotion();
+        this.promotion = promotion.getPromotion(barcode);
+//        this.generatePromotions();
     }
 
     public String getName(){
@@ -52,45 +54,5 @@ public class Item {
 
     public ArrayList<String> getPromotion(){
         return this.promotion;
-    }
-
-    private void generatePromotions() {
-        ArrayList<Path> promotionLocations = new ArrayList<Path>();
-        promotionLocations.add(FileSystems.getDefault().getPath("src/main/resources/", "buy_two_get_one_free_promotion.txt"));
-        promotionLocations.add(FileSystems.getDefault().getPath("src/main/resources/", "second_half_price_promotion.txt"));
-        promotionLocations.add(FileSystems.getDefault().getPath("src/main/resources/", "discount_promotion.txt"));
-
-        for (int i = 0; i < promotionLocations.size(); i++) {
-            generateOnePromotion(promotionLocations, i);
-        }
-    }
-    
-    private void generateOnePromotion(ArrayList<Path> promotionLocations, int i) {
-        ArrayList<String> promotionNames = new ArrayList<String>();
-        promotionNames.add("buy_two_get_one_free_promotion");
-        promotionNames.add("second_half_price_promotion");
-        promotionNames.add("discount_promotion");
-
-        try {
-            promotionText = (ArrayList<String>) Files.readAllLines(promotionLocations.get(i));
-
-            ArrayList<String> barcodes = splitPromotionText();
-            boolean isExist = barcodes.contains(barcode);
-            if (isExist) {
-                promotion.add(promotionNames.get(i));
-            }
-        } catch (IOException ex) {
-            System.out.println("fail read file!");
-        }
-    }
-
-    private ArrayList<String> splitPromotionText(){
-        ArrayList<String> barcodes = new ArrayList<String>();
-
-        for(String aPromotionText: promotionText){
-            String[] barcodeAndDiscount = aPromotionText.split(":");
-            barcodes.add(barcodeAndDiscount[0]);
-        }
-        return barcodes;
     }
 }
