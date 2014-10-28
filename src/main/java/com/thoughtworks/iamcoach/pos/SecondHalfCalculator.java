@@ -1,7 +1,10 @@
 package com.thoughtworks.iamcoach.pos;
 
-/**
- * Created by wanghuan on 14-10-28.
- */
-public class SecondHalfCalculator {
+public class SecondHalfCalculator extends PromotionCalculator{
+    @Override
+    public double calculatePromotion(CartItem cartItem) {
+        double promotionNumber = ((int) cartItem.getNum())/2;
+        double actualNumber = (cartItem.getNum() - promotionNumber) + promotionNumber/2;
+        return actualNumber * cartItem.getPrice();
+    }
 }

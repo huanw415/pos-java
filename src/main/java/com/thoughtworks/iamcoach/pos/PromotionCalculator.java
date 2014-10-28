@@ -6,21 +6,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 
-public class PromotionCalculator {
+public abstract class PromotionCalculator {
 
-    public double caLculateBuyTwoGetOneFreePromotion(CartItem cartItem){
-
-        double promotionNumber = ((int) cartItem.getNum())/3;
-        double actualNumber = cartItem.getNum() - promotionNumber;
-        return actualNumber * cartItem.getPrice();
-    }
-
-    public double caLculateSecondHalfPricePromotion(CartItem cartItem){
-
-        double promotionNumber = ((int) cartItem.getNum())/2;
-        double actualNumber = (cartItem.getNum() - promotionNumber) + promotionNumber/2;
-        return actualNumber * cartItem.getPrice();
-    }
+    public abstract double calculatePromotion(CartItem cartItem);
 
     public double caLculateDiscountPromotion(CartItem cartItem){
         double discount = getDiscount(cartItem);
