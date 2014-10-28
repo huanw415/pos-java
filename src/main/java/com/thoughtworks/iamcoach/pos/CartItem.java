@@ -29,20 +29,22 @@ public class CartItem extends Item{
 
     public double getSubTotal(){
         ArrayList<Double> allSubTotals = new ArrayList<Double>();
-        PromotionCalculator promotionCalculator = new PromotionCalculator();
 
         Item item = new Item(this.getBarcode(), this.getName(), this.getUnit(), this.getPrice());
         CartItem cartItem = new CartItem(item, this.num);
 
         for(int i=0; i<getPromotion().size(); i++){
             if(getPromotion().get(i).equals("buy_two_get_one_free_promotion")){
-                allSubTotals.add(promotionCalculator.caLculateBuyTwoGetOneFreePromotion(cartItem));
+                BuyTwoOneFreeCalculator buyTwoOneFreeCalculator = new BuyTwoOneFreeCalculator();
+                allSubTotals.add(buyTwoOneFreeCalculator.calculatePromotion(cartItem));
             }
             if(getPromotion().get(i).equals("second_half_price_promotion")){
-                allSubTotals.add(promotionCalculator.caLculateSecondHalfPricePromotion(cartItem));
+                SecondHalfCalculator secondHalfCalculator = new SecondHalfCalculator();
+                allSubTotals.add(secondHalfCalculator.calculatePromotion(cartItem));
             }
             if(getPromotion().get(i).equals("discount_promotion")){
-                allSubTotals.add(promotionCalculator.caLculateDiscountPromotion(cartItem));
+                DiscountCalculator discountCalculator = new DiscountCalculator();
+                allSubTotals.add(discountCalculator.calculatePromotion(cartItem));
             }
         }
         return Collections.min(allSubTotals);
