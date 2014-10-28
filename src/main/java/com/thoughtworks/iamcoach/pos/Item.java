@@ -1,7 +1,5 @@
 package com.thoughtworks.iamcoach.pos;
 
-import java.io.*;
-import java.nio.file.*;
 import java.util.ArrayList;
 
 public class Item {
@@ -11,8 +9,6 @@ public class Item {
     private String unit;
     private double price;
     private ArrayList<String> promotion = new ArrayList<String>();
-//    private ArrayList<String> promotionText = new ArrayList<String>();
-
 
     public Item(String barcode, String name, String unit, double price){
         this.setBarcode(barcode);
@@ -21,7 +17,6 @@ public class Item {
         this.setPrice(price);
         Promotion promotion = new Promotion();
         this.promotion = promotion.getPromotion(barcode);
-//        this.generatePromotions();
     }
 
     public String getName(){
