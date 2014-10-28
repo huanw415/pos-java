@@ -1,16 +1,23 @@
 package com.thoughtworks.iamcoach.pos;
 
-import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 
 public class CartItem extends Item{
     private double num;
 
+    private ArrayList<String> promotion = new ArrayList<String>();
+
     public CartItem(Item item, double num){
         super(item.getBarcode(), item.getName(), item.getUnit(), item.getPrice());
         this.setNum(num);
 
+        Promotion promotion = new Promotion();
+        this.promotion = promotion.getPromotion(getBarcode());
+    }
+
+    public ArrayList<String> getPromotion() {
+        return promotion;
     }
 
     public double getNum(){

@@ -8,15 +8,15 @@ public class Item {
     private String name;
     private String unit;
     private double price;
-    private ArrayList<String> promotion = new ArrayList<String>();
+//    private ArrayList<String> promotion = new ArrayList<String>();
 
     public Item(String barcode, String name, String unit, double price){
         this.setBarcode(barcode);
         this.setName(name);
         this.setUnit(unit);
         this.setPrice(price);
-        Promotion promotion = new Promotion();
-        this.promotion = promotion.getPromotion(barcode);
+//        Promotion promotion = new Promotion();
+//        this.promotion = promotion.getPromotion(barcode);
     }
 
     public String getName(){
@@ -47,7 +47,7 @@ public class Item {
         this.price = price;
     }
 
-    public ArrayList<String> getPromotion(){
-        return this.promotion;
-    }
+//    public ArrayList<String> getPromotion(){
+//        return this.promotion;
+//    }
 }
