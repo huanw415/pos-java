@@ -1,10 +1,11 @@
 package com.thoughtworks.iamcoach.pos;
 
-import java.util.ArrayList;
-
-/**
- * Created by wanghuan on 14-10-28.
- */
 public class BuyTwoOneFreeCalculator extends PromotionCalculator{
 
+    @Override
+    public double calculatePromotion(CartItem cartItem) {
+        double promotionNumber = ((int) cartItem.getNum())/3;
+        double actualNumber = cartItem.getNum() - promotionNumber;
+        return actualNumber * cartItem.getPrice();
+    }
 }
