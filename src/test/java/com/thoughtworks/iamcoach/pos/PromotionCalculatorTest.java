@@ -16,8 +16,8 @@ public class PromotionCalculatorTest {
         when(cartItem.getUnit()).thenReturn("瓶");
         when(cartItem.getNum()).thenReturn(5.0);
 
-        PromotionCalculator promotionCalculator = new PromotionCalculator();
-        assertThat(promotionCalculator.caLculateBuyTwoGetOneFreePromotion(cartItem)).isEqualTo(20.0);
+        BuyTwoOneFreeCalculator buyTwoOneFreeCalculator = new BuyTwoOneFreeCalculator();
+        assertThat(buyTwoOneFreeCalculator.calculatePromotion(cartItem)).isEqualTo(20.0);
     }
 
     @Test
@@ -29,8 +29,8 @@ public class PromotionCalculatorTest {
         when(cartItem.getUnit()).thenReturn("瓶");
         when(cartItem.getNum()).thenReturn(5.0);
 
-        PromotionCalculator promotionCalculator = new PromotionCalculator();
-        assertThat(promotionCalculator.caLculateSecondHalfPricePromotion(cartItem)).isEqualTo(20.00);
+        SecondHalfCalculator secondHalfCalculator = new SecondHalfCalculator();
+        assertThat(secondHalfCalculator.calculatePromotion(cartItem)).isEqualTo(20.00);
     }
     @Test
     public void can_caLculate_discount_promotion(){
@@ -41,7 +41,7 @@ public class PromotionCalculatorTest {
         when(cartItem.getUnit()).thenReturn("瓶");
         when(cartItem.getNum()).thenReturn(5.0);
 
-        PromotionCalculator promotionCalculator = new PromotionCalculator();
-        assertThat(promotionCalculator.caLculateDiscountPromotion(cartItem)).isEqualTo(18.75);
+        DiscountCalculator discountCalculator = new DiscountCalculator();
+        assertThat(discountCalculator.calculatePromotion(cartItem)).isEqualTo(18.75);
     }
 }

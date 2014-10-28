@@ -38,10 +38,14 @@ public class CartItemTest {
         double number = 4.00;
         CartItem cartItem = new CartItem(item, number);
 
-        PromotionCalculator promotionCalculator = mock(PromotionCalculator.class);
-        when(promotionCalculator.caLculateBuyTwoGetOneFreePromotion(cartItem)).thenReturn(20.00);
-        when(promotionCalculator.caLculateSecondHalfPricePromotion(cartItem)).thenReturn(15.00);
-        when(promotionCalculator.caLculateDiscountPromotion(cartItem)).thenReturn(23.00);
+        BuyTwoOneFreeCalculator buyTwoOneFreeCalculator = mock(BuyTwoOneFreeCalculator.class);
+        when(buyTwoOneFreeCalculator.calculatePromotion(cartItem)).thenReturn(20.00);
+
+        SecondHalfCalculator secondHalfCalculator = mock(SecondHalfCalculator.class);
+        when(secondHalfCalculator.calculatePromotion(cartItem)).thenReturn(15.00);
+
+        DiscountCalculator discountCalculator = mock(DiscountCalculator.class);
+        when(discountCalculator.calculatePromotion(cartItem)).thenReturn(23.00);
 
         assertThat(cartItem.getSubTotal()).isEqualTo(15.00);
     }

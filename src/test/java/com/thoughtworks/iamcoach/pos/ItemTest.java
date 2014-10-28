@@ -14,7 +14,6 @@ public class ItemTest {
         assertThat(item.getBarcode()).isEqualTo("ITEM000001");
         assertThat(item.getUnit()).isEqualTo("瓶");
         assertThat(item.getPrice()).isEqualTo(5.00);
-        assertThat(item.getPromotion().get(0)).isEqualTo("buy_two_get_one_free_promotion");
     }
 
 
