@@ -41,7 +41,7 @@ public class Printer {
                     + "   小计：" + cartItem.getSubTotal() + "元" +"\n";
 
         }
-        return allCartItems +="************************************************" + "\n";
+        return allCartItems +="************************************************";
     }
 
     private String printTotal(){
